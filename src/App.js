@@ -44,6 +44,10 @@ class App extends React.Component {
     details: {}
   };
 
+  componentDidMount() {
+    this.setState({ details: { fill: "#000000", size: 32 } });
+  }
+
   changeIcons = data => {
     const { details } = this.state;
     details[data] = data;

@@ -60,7 +60,6 @@ class ColorInput extends React.Component {
           min="16"
           max="64"
           ref={this.sliderRef}
-          list="tickmarks"
           onChange={this.changeIcon}
         />
         <button type="submit">Download ↓</button>
