@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const DownloadBlock = styled.div`
+const DownloadBlock = styled.form`
   display: flex;
   flex-direction: column;
   margin-top: 30px;
@@ -44,26 +44,18 @@ class ColorInput extends React.Component {
 
   render() {
     return (
-      <DownloadBlock>
+      <DownloadBlock
+        onChange={this.changeIcon}
+        onSubmit={() => {
+          alert("work in progress");
+        }}
+      >
         <div className="color">
-          <input
-            type="text"
-            name="hexcode"
-            ref={this.colorRef}
-            placeholder="Enter Hex Code Here"
-            onChange={this.changeIcon}
-          />
-          <input type="color" name="picker" ref={this.pickerRef} onChange={this.changeIcon} />
+          <input type="text" name="hexcode" ref={this.colorRef} placeholder="Enter Hex Code Here" />
+          <input type="color" name="picker" ref={this.pickerRef} />
         </div>
-        <input type="range" name="range" step="4" min="16" max="64" ref={this.sliderRef} onChange={this.changeIcon} />
-        <button
-          type="submit"
-          onClick={() => {
-            alert("work in progress");
-          }}
-        >
-          Download ↓
-        </button>
+        <input type="range" name="range" step="4" min="16" max="64" ref={this.sliderRef} />
+        <button type="submit">Download ↓</button>
       </DownloadBlock>
     );
   }
