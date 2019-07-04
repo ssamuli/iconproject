@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 1280px;
+  /* max-width: 1280px; */
   width: 100%;
   .icons {
     display: flex;
@@ -18,21 +18,22 @@ const Wrapper = styled.div`
     width: 100%;
     .icon {
       align-items: center;
+      background-color: #f2f2f2;
       justify-content: center;
       display: flex;
-      flex: 1 1 200px;
-      height: 140px;
+      flex: 1 200px;
+      height: 200px;
       margin: 5px;
-      max-width: 400px;
-      outline: 1px solid #ccc;
+      max-width: 200px;
       position: relative;
       h3 {
         position: absolute;
         text-align: center;
         left: 0;
         right: 0;
-        bottom: 5px;
+        bottom: 20px;
         font-size: 16px;
+        font-weight: 300;
         margin: auto;
       }
     }
