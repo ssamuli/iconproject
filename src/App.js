@@ -41,18 +41,10 @@ const Wrapper = styled.div`
 `;
 
 class App extends React.Component {
-  state = {
-    details: {}
-  };
+  state = { fill: "#000000", size: 32 };
 
-  componentDidMount() {
-    this.setState({ details: { fill: "#000000", size: 32 } });
-  }
-
-  changeIcons = data => {
-    const { details } = this.state;
-    details[data] = data;
-    this.setState({ details: data });
+  changeIcons = iconConf => {
+    this.setState(iconConf);
   };
 
   render() {
@@ -63,13 +55,13 @@ class App extends React.Component {
             const Icon = iconList[iconName];
             return (
               <div className="icon" key={Icon}>
-                <Icon key={Icon} details={this.state.details} viewBox="0 0 40 40" />
+                <Icon key={Icon} details={this.state} viewBox="0 0 40 40" />
                 <h3>{iconName}</h3>
               </div>
             );
           })}
         </div>
-        <ColorInput details={this.state.details} changeIcons={this.changeIcons} />
+        <ColorInput details={this.state} changeIcons={this.changeIcons} />
       </Wrapper>
     );
   }

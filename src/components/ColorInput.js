@@ -27,58 +27,35 @@ const DownloadBlock = styled.form`
 `;
 
 class ColorInput extends React.Component {
-  sliderRef = React.createRef();
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      color: "#000000"
-    }
-  }
-
-  changeIcon = () => {
+  handleColor = event => {
     const { changeIcons } = this.props;
-    const { color } = this.state;
-
-    const data = {
-      fill: color,
-      size: parseFloat(this.sliderRef.current.value)
-    };
-
-    changeIcons(data);
+    changeIcons({ fill: event.target.value });
   };
 
-  handleColor(event) {
-    this.setState({
-      color: event.target.value
-    });
-  }
+  handleSize = event => {
+    const { changeIcons } = this.props;
+    changeIcons({ size: event.target.value });
+  };
 
   render() {
+    const { details: { fill } } = this.props;
     return (
       <DownloadBlock
-        onChange={this.changeIcon}
         onSubmit={() => {
           alert("work in progress");
         }}
       >
         <div className="color">
-          <input 
-            type="text" 
+          <input
+            type="text"
             name="hexcode"
-            value={this.state.color} 
-            onChange={this.handleColor.bind(this)}
-            placeholder="Enter Hex Code Here" 
-            />
-          <input 
-            type="color" 
-            name="picker"
-            value={this.state.color} 
-            onChange={this.handleColor.bind(this)} 
-            />
+            value={fill}
+            onChange={this.handleColor}
+            placeholder="Enter Hex Code Here"
+          />
+          <input type="color" name="picker" value={fill} onChange={this.handleColor} />
         </div>
-        <input type="range" name="range" step="4" min="16" max="64" ref={this.sliderRef} />
+        <input type="range" name="range" step="4" min="16" max="64" onChange={this.handleSize} />
         <button type="submit">Download ↓</button>
       </DownloadBlock>
     );
